@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    
+        <video id="videoPlayer" controls></video>
+        
+</body>
+<script>
+    // Obtiene el elemento de video
+    const videoElement = document.getElementById('videoPlayer');
+  
+    // URL del archivo MPD que contiene la descripción del streaming DASH
+    const mpdURL = 'http://localhost:8080/video/video_stream.mpd';
+  
+    // Inicializa el reproductor Dash.js
+    const player = dashjs.MediaPlayer().create();
+  
+    // Carga el archivo MPD en el reproductor Dash.js
+    player.initialize(videoElement, mpdURL, true);
+  
+  </script>
+  
+</html>

@@ -1,4 +1,4 @@
-module backend
+module github.com/ertiti11/video_api
 
 go 1.18
 

@@ -10,7 +10,7 @@ title = sys.argv[3]
 def video(source,id):
 # activate Single-Source Mode and also define various streams
     stream_params = {
-        "-video_source": f"backend/pb_data/storage/4ronlqa5jkr2oda/{id}/{source}",
+        "-video_source": f"{source}",
         "-streams": [
             {"-resolution": "1920x1080", "-video_bitrate": "4000k"},  # Stream1: 1920x1080 at 4000kbs bitrate
             {"-resolution": "1280x720", "-framerate": 30.0},  # Stream2: 1280x720 at 30fps framerate
@@ -27,14 +27,14 @@ stream_params = video(source, id)
 # # Si el directorio principal no existe, créalo
 # if not os.path.exists(main_directory):
 #     os.makedirs(main_directory)
-print(f"backend/pb_data/storage/4ronlqa5jkr2oda/{id}/dash_out.mpd")
+print(f"/dash_out.mpd")
 # # Luego, crea el subdirectorio con el nombre `title`
 try:
     #os.mkdir(f"{main_directory}/{title}")
     print("transformandooo...")
      # describe a suitable manifest-file location/name and assign params
-    out = os.path.join(os.getcwd(), "backend", "pb_data", "storage", "4ronlqa5jkr2oda", id, "dash_out.mpd")
-    streamer = StreamGear(output=os.path.join(os.getcwd(), "backend", "pb_data", "storage", "4ronlqa5jkr2oda", id, "dash_out.mpd"), **stream_params)
+    out = "dash_out.mpd"
+    streamer = StreamGear(output=out, **stream_params)
     # trancode source
     streamer.transcode_source()
     # terminate

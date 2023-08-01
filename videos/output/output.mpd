@@ -14,7 +14,7 @@
 	</ServiceDescription>
 	<Period id="0" start="PT0.0S">
 		<AdaptationSet id="0" contentType="video" startWithSAP="1" segmentAlignment="true" bitstreamSwitching="true" frameRate="24000/1001" maxWidth="640" maxHeight="360" par="16:9" lang="und">
-			<Representation id="0" mimeType="video/mp4" codecs="avc1.64001e" bandwidth="1000000" width="640" height="360" sar="1:1">
+			<Representation id="0" mimeType="video/mp4" codecs="avc1.64001e" bandwidth="582866" width="640" height="360" sar="1:1">
 				<SegmentTemplate timescale="24000" initialization="init-stream$RepresentationID$.m4s" media="chunk-stream$RepresentationID$-$Number%05d$.m4s" startNumber="1">
 					<SegmentTimeline>
 						<S t="0" d="250250" />

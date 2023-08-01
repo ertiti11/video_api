@@ -18,18 +18,10 @@ func ToDash(source string, id string) {
 	outputDir := filepath.Join(cwd, "pb_data/storage/4ronlqa5jkr2oda", id)
 	outputFileName := "outlast.mpd"
 
-	// Crear el directorio de salida si no existe
-	// if _, err := os.Stat(outputDir); os.IsNotExist(err) {
-	// 	err := os.Mkdir(outputDir, os.ModePerm)
-	// 	if err != nil {
-	// 		log.Fatalf("Error al crear el directorio de salida: %v", err)
-	// 	}
-	// }
-
 	// Comando de ffmpeg para la conversión DASH
 
 	cmd := exec.Command("ffmpeg", "-i", inputFile, "-c:v", "libx264", "-b:v", "1M", "-c:a", "aac", "-b:a", "128k", "-f", "dash",
-		"-init_seg_name", filepath.Join("pb_data/storage/4ronlqa5jkr2oda", id, "$RepresentationID$"),
+		"-init_seg_name", filepath.Join("pb_data/storage/4ronlqa5jkr2oda", id, "$RepresentationID$.m4s"),
 		"-media_seg_name", filepath.Join("pb_data/storage/4ronlqa5jkr2oda", id, "segment-$Number%09d$.m4s"),
 		filepath.Join(outputDir, outputFileName))
 

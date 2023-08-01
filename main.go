@@ -32,20 +32,16 @@ func execute_transform(id string, source string, title string) {
 }
 
 func main() {
-	utils.Leer("video")
-	BASE_VIDEO_PATH := filepath.Join("backend\\pb_data\\storage\\4ronlqa5jkr2oda")
+	BASE_VIDEO_PATH := filepath.Join("pb_data/storage/4ronlqa5jkr2oda")
 	fmt.Println(BASE_VIDEO_PATH)
 	app := pocketbase.New()
 
 	app.OnRecordAfterCreateRequest().Add(func(e *core.RecordCreateEvent) error {
 		utils.ToDash(e.Record.Get("source").(string), e.Record.Get("id").(string))
-		// execute_transform(e.Record.Get("id").(string), e.Record.Get("source").(string), e.Record.Get("titulo").(string))
-
 		return nil
 	})
 
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
-		// or you can also use the shorter e.Router.GET("/articles/:slug", handler, middlewares...)
 		cwd, err := os.Getwd()
 		if err != nil {
 			log.Fatalf("Error al obtener el directorio de trabajo actual: %v", err)
@@ -90,13 +86,14 @@ func main() {
 			Method: http.MethodGet,
 			Path:   "/api/:id/:stream_id",
 			Handler: func(c echo.Context) error {
-				// fmt.Sprintf("%s.m4s", c.PathParam(":stream_id")
 				initSegmentPath := filepath.Join(cwd, c.PathParam("id"), c.PathParam("stream_id"))
-
+				fmt.Println(initSegmentPath)
 				initSegmentFile, err := os.Open(initSegmentPath)
 				if err != nil {
+					// fmt.Println("\nERROR en el archivo: ", initSegmentFile.Name()+"\n")
 					return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("Error al abrir el segmento de inicialización: %s", err.Error()))
 				}
+				// fmt.Println("\nse ha abierto el archivo: ", initSegmentFile.Name()+"\n")
 				defer initSegmentFile.Close()
 				initSegmentData, err := io.ReadAll(initSegmentFile)
 				if err != nil {
@@ -121,7 +118,7 @@ func main() {
 		}
 		e.Router.AddRoute(echo.Route{
 			Method: http.MethodGet,
-			Path:   "/api/:id/:segment_number",
+			Path:   "/api/:id/segment/:segment_number",
 			Handler: func(c echo.Context) error {
 				segmentFilename := fmt.Sprintf("segment-%s.m4s", c.PathParam("segmentNumber"))
 				segmentPath := filepath.Join(cwd, c.PathParam("id"), segmentFilename)

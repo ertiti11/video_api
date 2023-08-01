@@ -15,7 +15,7 @@
 	<Period id="0" start="PT0.0S">
 		<AdaptationSet id="0" contentType="video" startWithSAP="1" segmentAlignment="true" bitstreamSwitching="true" frameRate="24000/1001" maxWidth="640" maxHeight="360" par="16:9" lang="und">
 			<Representation id="0" mimeType="video/mp4" codecs="avc1.64001e" bandwidth="1000000" width="640" height="360" sar="1:1">
-				<SegmentTemplate timescale="24000" initialization="pb_data\storage\4ronlqa5jkr2oda\j6s3lrlfd3p5otf\$RepresentationID$" media="pb_data\storage\4ronlqa5jkr2oda\j6s3lrlfd3p5otf\segment-$Number%09d$.m4s" startNumber="1">
+				<SegmentTemplate timescale="24000" initialization="pb_data\storage\4ronlqa5jkr2oda\pb3ztg01y7acf48\$RepresentationID$.m4s" media="pb_data\storage\4ronlqa5jkr2oda\pb3ztg01y7acf48\segment\segment-$Number%09d$.m4s" startNumber="1">
 					<SegmentTimeline>
 						<S t="0" d="250250" r="2" />
 						<S d="222222" />
@@ -26,7 +26,7 @@
 		<AdaptationSet id="1" contentType="audio" startWithSAP="1" segmentAlignment="true" bitstreamSwitching="true" lang="und">
 			<Representation id="1" mimeType="audio/mp4" codecs="mp4a.40.2" bandwidth="128000" audioSamplingRate="48000">
 				<AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2" />
-				<SegmentTemplate timescale="48000" initialization="pb_data\storage\4ronlqa5jkr2oda\j6s3lrlfd3p5otf\$RepresentationID$" media="pb_data\storage\4ronlqa5jkr2oda\j6s3lrlfd3p5otf\segment-$Number%09d$.m4s" startNumber="1">
+				<SegmentTemplate timescale="48000" initialization="pb_data\storage\4ronlqa5jkr2oda\pb3ztg01y7acf48\$RepresentationID$.m4s" media="pb_data\storage\4ronlqa5jkr2oda\pb3ztg01y7acf48\segment\segment-$Number%09d$.m4s" startNumber="1">
 					<SegmentTimeline>
 						<S t="0" d="239616" />
 						<S d="240640" r="6" />
